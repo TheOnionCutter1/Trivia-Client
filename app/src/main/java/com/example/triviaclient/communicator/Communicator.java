@@ -3,9 +3,11 @@ package com.example.triviaclient.communicator;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.math.BigInteger;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Communicator {
@@ -13,6 +15,7 @@ public class Communicator {
     private static final int SERVER_PORT = 8820;
     private static final byte[] HANDSHAKE_MESSAGE = "Hello".getBytes(StandardCharsets.UTF_8);
     private static final int HANDSHAKE_LENGTH = Communicator.HANDSHAKE_MESSAGE.length;
+    private static final int DATA_START = (Integer.SIZE / Byte.SIZE) + 1;
 
     Socket _soc;
 
@@ -60,5 +63,33 @@ public class Communicator {
         DataOutputStream out = new DataOutputStream(this._soc.getOutputStream());
 
         out.write(message);
+    }
+
+    /**
+     * Receive a message from the server, according to the protocol.
+     *
+     * @return The message that was received.
+     * @throws IOException If the communication with the server has failed.
+     */
+    public ArrayList<Byte> receiveMessage() throws IOException {
+        DataInputStream in = new DataInputStream(this._soc.getInputStream());
+        ArrayList<Byte> message = new ArrayList<>();
+        int length;
+        byte[] buffer = new byte[Communicator.DATA_START];
+
+        // Get the message code and the length of the message
+        in.readFully(buffer);
+        for (byte b : buffer) {
+            message.add(b);
+        }
+        length = new BigInteger(Arrays.copyOfRange(buffer, 1, buffer.length)).intValue();
+
+        buffer = new byte[length];
+        in.readFully(buffer);
+        for (byte b : buffer) {
+            message.add(b);
+        }
+
+        return message;
     }
 }
