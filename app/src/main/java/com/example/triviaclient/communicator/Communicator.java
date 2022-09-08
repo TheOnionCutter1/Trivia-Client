@@ -22,6 +22,7 @@ public class Communicator {
 
     /**
      * Perform a handshake with the server.
+     *
      * @return Whether the handshake was successful.
      * @throws IOException If the communication with the server has failed.
      */
@@ -31,13 +32,14 @@ public class Communicator {
         DataInputStream in = new DataInputStream(this._soc.getInputStream());
 
         out.write(Communicator.HANDSHAKE_MESSAGE);
-        in.read(received);
 
-        return Arrays.equals(received, Communicator.HANDSHAKE_MESSAGE);
+        return in.read(received) == Communicator.HANDSHAKE_LENGTH &&
+                Arrays.equals(received, Communicator.HANDSHAKE_MESSAGE);
     }
 
     /**
      * Connect to the server.
+     *
      * @throws IOException If the communication with the server has failed.
      */
     public void connectToServer() throws IOException {
@@ -50,6 +52,7 @@ public class Communicator {
 
     /**
      * Send a message to the server.
+     *
      * @param message The message to send.
      * @throws IOException If the communication with the server has failed.
      */
