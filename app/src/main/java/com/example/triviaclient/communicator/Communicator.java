@@ -3,7 +3,6 @@ package com.example.triviaclient.communicator;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
-import java.math.BigInteger;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
@@ -74,7 +73,7 @@ public class Communicator {
     public ArrayList<Byte> receiveMessage() throws IOException {
         DataInputStream in = new DataInputStream(this._soc.getInputStream());
         ArrayList<Byte> message = new ArrayList<>();
-        int length;
+        int length = 0;
         byte[] buffer = new byte[Communicator.DATA_START];
 
         // Get the message code and the length of the message
@@ -82,7 +81,10 @@ public class Communicator {
         for (byte b : buffer) {
             message.add(b);
         }
-        length = new BigInteger(Arrays.copyOfRange(buffer, 1, buffer.length)).intValue();
+
+        for (int i = 0; i < Integer.SIZE / Byte.SIZE; i++) {
+            length |= buffer[i] << (Byte.SIZE * i);
+        }
 
         buffer = new byte[length];
         in.readFully(buffer);
