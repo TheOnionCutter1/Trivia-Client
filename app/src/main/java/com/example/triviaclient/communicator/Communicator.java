@@ -14,7 +14,8 @@ public class Communicator {
     private static final int SERVER_PORT = 8820;
     private static final byte[] HANDSHAKE_MESSAGE = "Hello".getBytes(StandardCharsets.UTF_8);
     private static final int HANDSHAKE_LENGTH = Communicator.HANDSHAKE_MESSAGE.length;
-    private static final int DATA_START = (Integer.SIZE / Byte.SIZE) + 1;
+
+    public static final int DATA_START = (Integer.SIZE / Byte.SIZE) + 1;
 
     private final Socket _soc;
 
