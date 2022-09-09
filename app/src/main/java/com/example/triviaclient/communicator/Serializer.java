@@ -15,10 +15,9 @@ public class Serializer {
      * @return A buffer with the serialized message.
      */
     public static ArrayList<Byte> serializeRequest(RequestCode code, Object request) {
-        Gson gson = new Gson();
         ArrayList<Byte> result = new ArrayList<>();
         // Serialize the message contents/data
-        byte[] dataArr = gson.toJson(request).getBytes(StandardCharsets.UTF_8);
+        byte[] dataArr = new Gson().toJson(request).getBytes(StandardCharsets.UTF_8);
         byte[] dataLengthArr = {0};
 
         // Get length of the serialized data
