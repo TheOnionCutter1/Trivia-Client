@@ -18,12 +18,12 @@ public class Serializer {
         ArrayList<Byte> result = new ArrayList<>();
         // Serialize the message contents/data
         byte[] dataArr = new Gson().toJson(request).getBytes(StandardCharsets.UTF_8);
-        byte[] dataLengthArr = {0};
+        byte[] dataLengthArr = new byte[Integer.SIZE / Byte.SIZE];
 
         // Get length of the serialized data
-        for (int i = 0; i < Integer.SIZE / Byte.SIZE; i++) {
-            dataLengthArr[i] = (byte) (dataArr.length &
-                    (0xFF << (Byte.SIZE * i)) >> (Byte.SIZE * i));
+        for (int i = 0; i < dataLengthArr.length; i++) {
+            dataLengthArr[i] = (byte) ((dataArr.length &
+                    (0xFF << (Byte.SIZE * i))) >> (Byte.SIZE * i));
         }
 
         // Get the message code
@@ -49,8 +49,12 @@ public class Serializer {
      * @return The deserialized message.
      */
     public static <T> T deserializeResponse(ArrayList<Byte> buffer, Type responseType) {
+        String bufferStr = "";
+
         // Convert the buffer/response to a string
-        String bufferStr = buffer.subList(Communicator.DATA_START, buffer.size()).toString();
+        for (byte b : buffer.subList(Communicator.DATA_START, buffer.size())) {
+            bufferStr += (char) b;
+        }
 
         // Deserialize the response
         return new Gson().fromJson(bufferStr, responseType);
