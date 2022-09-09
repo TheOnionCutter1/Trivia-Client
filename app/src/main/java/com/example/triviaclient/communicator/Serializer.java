@@ -10,7 +10,7 @@ public class Serializer {
     /**
      * Serialize a message to be sent to the server.
      *
-     * @param code    The code of the message (message type, applicative)
+     * @param code    The code of the message (message type, applicative).
      * @param request A struct of a request to be serialized.
      * @return A buffer with the serialized message.
      */
