@@ -24,9 +24,9 @@ public enum RequestCode {
     SUBMIT_ANSWER(15),
     GET_GAME_RESULTS(16);
 
-    final int value;
+    final byte value;
 
     RequestCode(int value) {
-        this.value = value;
+        this.value = (byte) value;
     }
 }
