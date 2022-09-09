@@ -2,6 +2,7 @@ package com.example.triviaclient.communicator;
 
 import com.google.gson.Gson;
 
+import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
@@ -13,7 +14,7 @@ public class Serializer {
      * @param request A struct of a request to be serialized.
      * @return A buffer with the serialized message.
      */
-    public static ArrayList<Byte> SerializeRequest(RequestCode code, Object request) {
+    public static ArrayList<Byte> serializeRequest(RequestCode code, Object request) {
         Gson gson = new Gson();
         ArrayList<Byte> result = new ArrayList<>();
         // Serialize the message contents/data
@@ -38,5 +39,21 @@ public class Serializer {
         }
 
         return result;
+    }
+
+    /**
+     * Deserialize a message that was received from the server.
+     *
+     * @param buffer       The message that was received from the server.
+     * @param responseType The type of the object that the message will be put in.
+     * @param <T>          The type of the object that the message will be put in.
+     * @return The deserialized message.
+     */
+    public static <T> T deserializeResponse(ArrayList<Byte> buffer, Type responseType) {
+        // Convert the buffer/response to a string
+        String bufferStr = buffer.subList(Communicator.DATA_START, buffer.size()).toString();
+
+        // Deserialize the response
+        return new Gson().fromJson(bufferStr, responseType);
     }
 }
