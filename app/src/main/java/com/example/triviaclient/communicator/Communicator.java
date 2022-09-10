@@ -19,8 +19,14 @@ public class Communicator {
 
     private Socket _soc;
 
-    public Communicator() {
+    private static final Communicator _instance = new Communicator();
+
+    private Communicator() {
         this._soc = null;
+    }
+
+    public static Communicator getInstance() {
+        return Communicator._instance;
     }
 
     /**
