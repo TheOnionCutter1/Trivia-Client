@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.example.triviaclient.communicator.Communicator;
-import com.google.gson.Gson;
 
 public class Login extends AppCompatActivity {
     private Communicator _communicator;

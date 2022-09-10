@@ -4,12 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.triviaclient.communicator.Communicator;
-import com.google.gson.Gson;
 
 import java.io.IOException;
 
