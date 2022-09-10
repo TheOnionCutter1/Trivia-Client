@@ -3,4 +3,7 @@
     <string name="welcome_message">Start Playing Trivia!</string>
     <string name="connect_button_unpressed">Connect To Server</string>
     <string name="connect_button_pressed">Connecting To Server...</string>
+    <string name="login_title">Login</string>
+    <string name="username_hint">Username</string>
+    <string name="signup">Signup</string>
 </resources>
