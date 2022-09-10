@@ -10,17 +10,17 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Communicator {
-    private static final String SERVER_IP = "127.0.0.1";
+    private static final String SERVER_IP = "192.168.68.108";
     private static final int SERVER_PORT = 8820;
     private static final byte[] HANDSHAKE_MESSAGE = "Hello".getBytes(StandardCharsets.UTF_8);
     private static final int HANDSHAKE_LENGTH = Communicator.HANDSHAKE_MESSAGE.length;
 
     public static final int DATA_START = (Integer.SIZE / Byte.SIZE) + 1;
 
-    private final Socket _soc;
+    private Socket _soc;
 
     public Communicator() {
-        this._soc = new Socket();
+        this._soc = null;
     }
 
     /**
@@ -46,7 +46,8 @@ public class Communicator {
      * @throws IOException If the communication with the server has failed.
      */
     public void connectToServer() throws IOException {
-        this._soc.connect(new InetSocketAddress(SERVER_IP, SERVER_PORT));
+        this._soc = new Socket();
+        this._soc.connect(new InetSocketAddress(SERVER_IP, SERVER_PORT), 3000);
 
         if (!this.performHandshake()) {
             throw new IOException("Handshake with the server has failed");
