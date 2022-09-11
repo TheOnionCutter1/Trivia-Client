@@ -56,14 +56,14 @@ public class Serializer {
      * @return The deserialized message.
      */
     public static <T> T deserializeResponse(ArrayList<Byte> buffer, Type responseType) {
-        String bufferStr = "";
+        StringBuilder bufferStr = new StringBuilder();
 
         // Convert the buffer/response to a string
         for (byte b : buffer.subList(Communicator.DATA_START, buffer.size())) {
-            bufferStr += (char) b;
+            bufferStr.append((char) b);
         }
 
         // Deserialize the response
-        return new Gson().fromJson(bufferStr, responseType);
+        return new Gson().fromJson(bufferStr.toString(), responseType);
     }
 }
