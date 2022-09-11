@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.triviaclient.communicator.Communicator;
@@ -12,13 +13,14 @@ import com.example.triviaclient.communicator.Communicator;
 import java.io.IOException;
 
 public class LoadingScreen extends AppCompatActivity {
-    private Communicator _communicator;
     private Toast _connectionFailedMessage;
 
     private Button _connectToServer;
+    private EditText _serverIP;
 
-    private void _initializeButtons() {
+    private void _initializeComponents() {
         this._connectToServer = this.findViewById(R.id.button_connect);
+        this._serverIP = this.findViewById(R.id.edittext_server_address);
 
         this._connectToServer.setOnClickListener(v -> {
             Button b = (Button) v;
@@ -30,7 +32,7 @@ public class LoadingScreen extends AppCompatActivity {
                 Intent loginScreen = new Intent(this, Login.class);
 
                 try {
-                    this._communicator.connectToServer();
+                    Communicator.getInstance().connectToServer(this._serverIP.getText().toString());
                     this.startActivity(loginScreen);
                 } catch (IOException e) {
                     this._connectionFailedMessage.show();
@@ -49,9 +51,8 @@ public class LoadingScreen extends AppCompatActivity {
 
         this._connectionFailedMessage = Toast.makeText(LoadingScreen.this,
                 "Connection to the server has failed", Toast.LENGTH_LONG);
-        this._communicator = Communicator.getInstance();
 
-        this._initializeButtons();
+        this._initializeComponents();
         this._connectToServer.performClick();
     }
 }
