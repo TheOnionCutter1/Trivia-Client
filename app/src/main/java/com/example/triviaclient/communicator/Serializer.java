@@ -14,11 +14,12 @@ public class Serializer {
      * @param request A struct of a request to be serialized.
      * @return A buffer with the serialized message.
      */
-    public static ArrayList<Byte> serializeRequest(RequestCode code, Object request) {
+    public static byte[] serializeRequest(RequestCode code, Object request) {
         ArrayList<Byte> result = new ArrayList<>();
         // Serialize the message contents/data
         byte[] dataArr = new Gson().toJson(request).getBytes(StandardCharsets.UTF_8);
         byte[] dataLengthArr = new byte[Integer.SIZE / Byte.SIZE];
+        byte[] resultArr;
 
         // Get length of the serialized data
         for (int i = 0; i < dataLengthArr.length; i++) {
@@ -37,7 +38,13 @@ public class Serializer {
             result.add(b);
         }
 
-        return result;
+        resultArr = new byte[result.size()];
+        for (int i = 0; i < resultArr.length; i++)
+        {
+            resultArr[i] = result.get(i);
+        }
+
+        return resultArr;
     }
 
     /**
