@@ -18,6 +18,9 @@ public class LoadingScreen extends AppCompatActivity {
     private Button _connectToServer;
     private EditText _serverIP;
 
+    /**
+     * Initialize the activity's components.
+     */
     private void _initializeComponents() {
         this._connectToServer = this.findViewById(R.id.button_connect);
         this._serverIP = this.findViewById(R.id.edittext_server_address);
