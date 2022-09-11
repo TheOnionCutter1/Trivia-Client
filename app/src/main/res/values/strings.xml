@@ -2,9 +2,11 @@
     <string name="app_name">TriviaClient</string>
     <string name="welcome_message">Start Playing Trivia!</string>
     <string name="connect_button_unpressed">Connect To Server</string>
-    <string name="connect_button_pressed">Connecting To Server...</string>
+    <string name="connect_button_pressed">Connecting To Server…</string>
     <string name="login_title">Login</string>
     <string name="username_hint">Username</string>
     <string name="signup">Signup</string>
-    <string name="server_ip">Server IP</string>
+    <string name="default_ip">192.168.68.108</string>
+    <string name="server_ip_hint">Server IP</string>
+    <string name="password_hint">Password</string>
 </resources>

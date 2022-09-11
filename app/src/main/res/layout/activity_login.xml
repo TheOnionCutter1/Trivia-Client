@@ -23,12 +23,13 @@
         android:layout_height="46dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="@string/username_hint"
+        android:hint="@string/username_hint"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.364" />
+        app:layout_constraintVertical_bias="0.364"
+        android:autofillHints="Username" />
 
     <EditText
         android:id="@+id/edittext_password"
@@ -36,11 +37,13 @@
         android:layout_height="46dp"
         android:ems="10"
         android:inputType="textPassword"
+        android:hint="@string/password_hint"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.452" />
+        app:layout_constraintVertical_bias="0.452"
+        android:autofillHints="Password" />
 
     <Button
         android:id="@+id/button_login"
