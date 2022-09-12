@@ -16,6 +16,9 @@
         android:theme="@style/Theme.TriviaClient"
         tools:targetApi="31">
         <activity
+            android:name=".HomeScreen"
+            android:exported="false" />
+        <activity
             android:name=".Login"
             android:exported="false" />
         <activity
