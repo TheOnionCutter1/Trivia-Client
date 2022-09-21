@@ -56,7 +56,7 @@ public class LoadingScreen extends AppCompatActivity {
         setContentView(R.layout.activity_loading_screen);
 
         this._connectionFailedMessage = Toast.makeText(LoadingScreen.this,
-                "Connection to the server has failed", Toast.LENGTH_LONG);
+                R.string.connection_failed, Toast.LENGTH_LONG);
 
         this._initializeComponents();
         this._connectButton.performClick();
