@@ -25,7 +25,6 @@ public class Login extends AppCompatActivity {
     private EditText _password;
     private TextView _errorTextView;
     private Button _loginButton;
-    private Button _signupButton;
 
     private void _login(Requests.Login req) {
         ArrayList<Byte> response;
@@ -63,8 +62,9 @@ public class Login extends AppCompatActivity {
      * Initialize the activity's components.
      */
     private void _initializeComponents() {
+        Button signupButton = this.findViewById(R.id.button_signup);
+
         this._loginButton = this.findViewById(R.id.button_login);
-        this._signupButton = this.findViewById(R.id.button_signup);
 
         this._errorTextView = this.findViewById(R.id.textview_login_error);
         this._username = this.findViewById(R.id.edittext_username);
@@ -80,7 +80,7 @@ public class Login extends AppCompatActivity {
             req.password = this._password.getText().toString();
             new Thread(() -> this._login(req)).start();
         });
-        this._signupButton.setOnClickListener((v) -> {
+        signupButton.setOnClickListener((v) -> {
             Intent signup = new Intent(this, SignupActivity.class);
 
             this.startActivity(signup);
