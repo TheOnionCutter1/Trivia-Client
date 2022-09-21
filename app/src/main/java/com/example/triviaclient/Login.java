@@ -36,6 +36,7 @@ public class Login extends AppCompatActivity {
             );
             response = this._communicator.receiveMessage();
             if (response.get(0) == ResponseCode.ERROR.value) {
+                // Display the error message
                 this._loginButton.setClickable(true);
                 this._errorTextView.post(() -> this._errorTextView.setText(
                         Serializer.<Responses.Error>deserializeResponse(
@@ -43,12 +44,14 @@ public class Login extends AppCompatActivity {
                         ).message)
                 );
             } else {
+                // Login successful, move to the home screen
                 nextScreen = new Intent(this, HomeScreen.class);
                 nextScreen.putExtra("username", req.username);
                 this.startActivity(nextScreen);
                 this.finish();
             }
         } catch (IOException e) {
+            // Connectivity error
             nextScreen = new Intent(this, LoadingScreen.class);
             this.startActivity(nextScreen);
             this.finish();
