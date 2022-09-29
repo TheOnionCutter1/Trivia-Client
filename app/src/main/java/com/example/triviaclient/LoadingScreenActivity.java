@@ -5,24 +5,25 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.triviaclient.communicator.Communicator;
+import com.example.triviaclient.databinding.ActivityLoadingScreenBinding;
 
 import java.io.IOException;
 
 public class LoadingScreenActivity extends AppCompatActivity {
     private Toast _connectionFailedMessage;
 
-    private Button _connectButton;
-    private EditText _serverIP;
+    private ActivityLoadingScreenBinding _binding;
 
     private void _connectToServer(Button connectButton) {
         Intent loginScreen = new Intent(this, LoginActivity.class);
 
         try {
-            Communicator.getInstance().connectToServer(this._serverIP.getText().toString());
+            Communicator.getInstance().connectToServer(
+                    this._binding.edittextServerAddress.getText().toString()
+            );
             this.startActivity(loginScreen);
             this.finish();
         } catch (IOException e) {
@@ -37,10 +38,7 @@ public class LoadingScreenActivity extends AppCompatActivity {
      * Initialize the activity's components.
      */
     private void _initializeComponents() {
-        this._connectButton = this.findViewById(R.id.button_connect);
-        this._serverIP = this.findViewById(R.id.edittext_server_address);
-
-        this._connectButton.setOnClickListener(v -> {
+        this._binding.buttonConnect.setOnClickListener(v -> {
             Button b = (Button) v;
 
             b.setClickable(false);
@@ -53,12 +51,13 @@ public class LoadingScreenActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_loading_screen);
+        this._binding = ActivityLoadingScreenBinding.inflate(this.getLayoutInflater());
+        setContentView(this._binding.getRoot());
 
         this._connectionFailedMessage = Toast.makeText(LoadingScreenActivity.this,
                 R.string.connection_failed, Toast.LENGTH_LONG);
 
         this._initializeComponents();
-        this._connectButton.performClick();
+        this._binding.buttonConnect.performClick();
     }
 }
