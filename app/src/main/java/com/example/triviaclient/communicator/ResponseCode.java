@@ -4,7 +4,7 @@ public enum ResponseCode {
     ERROR(0),
     SUCCESS(1);
 
-    final byte value;
+    public final byte value;
 
     ResponseCode(int value) {
         this.value = (byte) value;

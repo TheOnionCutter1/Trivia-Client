@@ -89,8 +89,8 @@ public class Communicator {
             message.add(b);
         }
 
-        for (int i = 0; i < Integer.SIZE / Byte.SIZE; i++) {
-            length |= buffer[i] << (Byte.SIZE * i);
+        for (int i = Integer.SIZE / Byte.SIZE; i > 0; i--) {
+            length |= buffer[i] << (Byte.SIZE * (i - 1));
         }
 
         buffer = new byte[length];
