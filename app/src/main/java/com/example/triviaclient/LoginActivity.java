@@ -35,24 +35,26 @@ public class LoginActivity extends AppCompatActivity {
                     Serializer.serializeRequest(RequestCode.LOGIN, req)
             );
             response = this._communicator.receiveMessage();
-            if (response.get(0) == ResponseCode.ERROR.value) {
-                // Display the error message
-                this._loginButton.setClickable(true);
-                this._errorTextView.post(() -> this._errorTextView.setText(
-                        Serializer.<Responses.Error>deserializeResponse(
-                                response, Responses.Error.class
-                        ).message)
-                );
-            } else {
-                // Login successful, move to the home screen
-                nextScreen = new Intent(this, HomeScreenActivity.class);
-                nextScreen.putExtra("username", req.username);
-                this.startActivity(nextScreen);
-                this.finish();
-            }
         } catch (IOException e) {
             // Connectivity error
             nextScreen = new Intent(this, LoadingScreenActivity.class);
+            this.startActivity(nextScreen);
+            this.finish();
+
+            return;
+        }
+        if (response.get(0) == ResponseCode.ERROR.value) {
+            // Display the error message
+            this._loginButton.setClickable(true);
+            this._errorTextView.post(() -> this._errorTextView.setText(
+                    Serializer.<Responses.Error>deserializeResponse(
+                            response, Responses.Error.class
+                    ).message)
+            );
+        } else {
+            // Login successful, move to the home screen
+            nextScreen = new Intent(this, HomeScreenActivity.class);
+            nextScreen.putExtra("username", req.username);
             this.startActivity(nextScreen);
             this.finish();
         }
