@@ -5,9 +5,10 @@
     <string name="connect_button_pressed">Connecting To Server…</string>
     <string name="login_title">Login</string>
     <string name="username_hint">Username</string>
-    <string name="signup">Signup</string>
     <string name="default_ip">192.168.68.107</string>
     <string name="server_ip_hint">Server IP</string>
     <string name="password_hint">Password</string>
     <string name="connection_failed">Connection to the server has failed</string>
+    <string name="signup_title">Signup</string>
+    <string name="email_hint">Email</string>
 </resources>
