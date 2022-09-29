@@ -12,14 +12,14 @@ import com.example.triviaclient.communicator.Communicator;
 
 import java.io.IOException;
 
-public class LoadingScreen extends AppCompatActivity {
+public class LoadingScreenActivity extends AppCompatActivity {
     private Toast _connectionFailedMessage;
 
     private Button _connectButton;
     private EditText _serverIP;
 
     private void _connectToServer(Button connectButton) {
-        Intent loginScreen = new Intent(this, Login.class);
+        Intent loginScreen = new Intent(this, LoginActivity.class);
 
         try {
             Communicator.getInstance().connectToServer(this._serverIP.getText().toString());
@@ -55,7 +55,7 @@ public class LoadingScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loading_screen);
 
-        this._connectionFailedMessage = Toast.makeText(LoadingScreen.this,
+        this._connectionFailedMessage = Toast.makeText(LoadingScreenActivity.this,
                 R.string.connection_failed, Toast.LENGTH_LONG);
 
         this._initializeComponents();

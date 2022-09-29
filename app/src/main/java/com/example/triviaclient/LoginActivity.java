@@ -18,7 +18,7 @@ import com.example.triviaclient.communicator.Serializer;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class Login extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
     private Communicator _communicator;
 
     private EditText _username;
@@ -45,14 +45,14 @@ public class Login extends AppCompatActivity {
                 );
             } else {
                 // Login successful, move to the home screen
-                nextScreen = new Intent(this, HomeScreen.class);
+                nextScreen = new Intent(this, HomeScreenActivity.class);
                 nextScreen.putExtra("username", req.username);
                 this.startActivity(nextScreen);
                 this.finish();
             }
         } catch (IOException e) {
             // Connectivity error
-            nextScreen = new Intent(this, LoadingScreen.class);
+            nextScreen = new Intent(this, LoadingScreenActivity.class);
             this.startActivity(nextScreen);
             this.finish();
         }
