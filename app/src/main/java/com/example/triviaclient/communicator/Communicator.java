@@ -51,6 +51,9 @@ public class Communicator {
      * @throws IOException If the communication with the server has failed.
      */
     public void connectToServer(String serverIP) throws IOException {
+        if (this._soc != null) {
+            this._soc.close();
+        }
         this._soc = new Socket();
         this._soc.connect(new InetSocketAddress(serverIP, SERVER_PORT), 3000);
 
