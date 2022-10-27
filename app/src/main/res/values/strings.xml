@@ -12,4 +12,9 @@
     <string name="signup_title">Signup</string>
     <string name="email_hint">Email</string>
     <string name="greetings_message">Hello,\ </string>
+    <string name="join_room_button">Join Room</string>
+    <string name="create_room_button">Create Room</string>
+    <string name="my_statistics_button">My Statistics</string>
+    <string name="global_high_scores_button">Global High Scores</string>
+    <string name="log_out_button">Log Out</string>
 </resources>
