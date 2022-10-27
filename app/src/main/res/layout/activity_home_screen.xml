@@ -6,4 +6,73 @@
     android:layout_height="match_parent"
     tools:context=".HomeScreenActivity">
 
+    <TextView
+        android:id="@+id/textview_home_screen_title"
+        android:layout_width="411dp"
+        android:layout_height="62dp"
+        android:text="@string/greetings_message"
+        android:textAlignment="center"
+        android:textSize="40sp"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.343"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.049" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="208dp"
+        android:layout_height="90dp"
+        android:layout_marginTop="20dp"
+        android:text="Join Room"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textview_home_screen_title" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="208dp"
+        android:layout_height="90dp"
+        android:layout_marginTop="32dp"
+        android:text="Create Room"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="208dp"
+        android:layout_height="90dp"
+        android:layout_marginTop="32dp"
+        android:text="My Statistics"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button3" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="208dp"
+        android:layout_height="90dp"
+        android:layout_marginTop="32dp"
+        android:text="Global High Scores"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button4" />
+
+    <Button
+        android:id="@+id/button6"
+        android:layout_width="208dp"
+        android:layout_height="90dp"
+        android:layout_marginTop="32dp"
+        android:text="Log Out"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button5" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
