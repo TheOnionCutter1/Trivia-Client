@@ -4,13 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.triviaclient.communicator.Communicator;
 import com.example.triviaclient.communicator.RequestCode;
 import com.example.triviaclient.communicator.ResponseCode;
-import com.example.triviaclient.communicator.Responses;
 import com.example.triviaclient.communicator.Serializer;
 import com.example.triviaclient.databinding.ActivityHomeScreenBinding;
 
@@ -52,6 +50,19 @@ public class HomeScreenActivity extends AppCompatActivity {
     }
 
     /**
+     * Start an activity and pass the username as a parameter for the intent.
+     * This will finish the current activity.
+     *
+     * @param cls The activity to start.
+     */
+    private void _changeActivity(Class<?> cls) {
+        this.startActivity(
+                new Intent(this, cls).putExtra("username", this._username)
+        );
+        this.finish();
+    }
+
+    /**
      * Initialize the activity's components.
      */
     private void _initializeComponents() {
@@ -59,6 +70,18 @@ public class HomeScreenActivity extends AppCompatActivity {
         this._username = this.getIntent().getStringExtra("username");
         this._binding.textviewHomeScreenTitle.append(this._username + "!");
 
+        this._binding.buttonJoinRoom.setOnClickListener(
+                (v) -> this._changeActivity(JoinRoomActivity.class)
+        );
+        this._binding.buttonCreateRoom.setOnClickListener(
+                (v) -> this._changeActivity(CreateRoomActivity.class)
+        );
+        this._binding.buttonMyStatistics.setOnClickListener(
+                (v) -> this._changeActivity(PersonalStatsActivity.class)
+        );
+        this._binding.buttonGlobalHighScores.setOnClickListener(
+                (v) -> this._changeActivity(GlobalStatsActivity.class)
+        );
         this._binding.buttonLogout.setOnClickListener((v) -> {
             v.setClickable(false);
             new Thread(this::_logout).start();
