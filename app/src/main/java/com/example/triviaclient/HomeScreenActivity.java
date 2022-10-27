@@ -51,7 +51,6 @@ public class HomeScreenActivity extends AppCompatActivity {
 
     /**
      * Start an activity and pass the username as a parameter for the intent.
-     * This will finish the current activity.
      *
      * @param cls The activity to start.
      */
@@ -59,7 +58,6 @@ public class HomeScreenActivity extends AppCompatActivity {
         this.startActivity(
                 new Intent(this, cls).putExtra("username", this._username)
         );
-        this.finish();
     }
 
     /**
