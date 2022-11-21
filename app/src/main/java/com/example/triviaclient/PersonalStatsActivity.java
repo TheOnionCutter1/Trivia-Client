@@ -29,7 +29,8 @@ public class PersonalStatsActivity extends AppCompatActivity {
             response = this._communicator.receiveMessage();
         } catch (IOException e) {
             // Connectivity error
-            this.startActivity(new Intent(this, LoadingScreenActivity.class));
+            this.startActivity(new Intent(this, LoadingScreenActivity.class)
+                    .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
             this.finish();
 
             return;
