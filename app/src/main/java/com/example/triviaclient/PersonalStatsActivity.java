@@ -43,7 +43,7 @@ public class PersonalStatsActivity extends AppCompatActivity {
         this._binding.textViewWrongAnswers.append(
                 Integer.toString(stats.answerCount - stats.correctAnswersCount)
         );
-        this._binding.textViewTimePerQuestion.append(Float.toString(stats.avgAnswerTime));
+        this._binding.textViewTimePerQuestion.append(stats.avgAnswerTime + " seconds");
     }
 
     @Override
