@@ -25,7 +25,6 @@ public class SignupActivity extends AppCompatActivity {
 
     private void _signup(Requests.Signup req) {
         ArrayList<Byte> response;
-        Intent nextScreen;
 
         try {
             this._communicator.sendMessage(
@@ -34,8 +33,8 @@ public class SignupActivity extends AppCompatActivity {
             response = this._communicator.receiveMessage();
         } catch (IOException e) {
             // Connectivity error
-            nextScreen = new Intent(this, LoadingScreenActivity.class);
-            this.startActivity(nextScreen);
+            this.startActivity(new Intent(this, LoadingScreenActivity.class)
+                    .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
             this.finish();
 
             return;

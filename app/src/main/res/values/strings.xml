@@ -17,4 +17,9 @@
     <string name="my_statistics_button">My Statistics</string>
     <string name="global_high_scores_button">Global High Scores</string>
     <string name="log_out_button">Log Out</string>
+    <string name="personal_statistics_title">Personal Statistics</string>
+    <string name="number_of_games_label">Number of games:\n</string>
+    <string name="number_of_correct_answers_label">Number of correct answers:\n</string>
+    <string name="number_of_wrong_answers_label">Number of wrong answers:\n</string>
+    <string name="average_time_per_question_label">Average time per question:\n</string>
 </resources>
