@@ -14,6 +14,14 @@ public class Responses {
             public boolean isActive;
         }
 
+        public static class Question {
+            public int id;
+            public String question;
+            public ArrayList<String> possibleAnswers;
+            public int correctAnswer;
+            public int subcategory;
+        }
+
         public static class Statistics {
             public float avgAnswerTime;
             public int answerCount;
@@ -91,5 +99,21 @@ public class Responses {
 
     public static class GetGameResults extends Success {
         public ArrayList<Data.PlayerResults> results;
+    }
+
+    public static class ManageQuestions extends Success {
+    }
+
+    public static class GetQuestionList extends Success {
+        ArrayList<Data.Question> questions;
+    }
+
+    public static class LeaveQuestionManager extends Success {
+    }
+
+    public static class InsertQuestion extends Success {
+    }
+
+    public static class DeleteQuestion extends Success {
     }
 }

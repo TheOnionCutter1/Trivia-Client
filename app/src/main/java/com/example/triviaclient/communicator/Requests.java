@@ -1,5 +1,7 @@
 package com.example.triviaclient.communicator;
 
+import java.util.ArrayList;
+
 public class Requests {
     public static class Login {
         public String username;
@@ -29,5 +31,22 @@ public class Requests {
 
     public static class SubmitAnswer {
         public int answerId;
+    }
+
+    public static class GetSubcategoryPlayerStats {
+        public int subcategory;
+    }
+
+    public static class GetQuestionList {
+        public int offset;
+        public int limit;
+    }
+
+    public static class InsertQuestion {
+        Responses.Data.Question question;
+    }
+
+    public static class DeleteQuestion {
+        int id;
     }
 }
